@@ -152,12 +152,118 @@ public class MyOwnShop {
         }
     }
 
-    private static void MasVendidos() {
+    private static void MasVendidos()
+    {
         System.out.println("Mostrando productos más vendidos");
+        //Validacion xdxdxd//
+        if (i == 0)
+        {
+            System.out.println("No hay productos registrados.");
+            return;
+        }
+
+
+        int[] codigosCopia = new int[i];
+        String[] nombresCopia = new String[i];
+        int[] ventasCopia = new int[i];
+
+        for (int j = 0; j < i; j++) {
+            codigosCopia[j] = j;
+            nombresCopia[j] = NomProd[j];
+            ventasCopia[j] = cantidadventa[j];
+        }
+                //ordena ascendentemente
+        for (int j = 0; j < i - 1; j++)
+        {
+            for (int k = 0; k < i - 1 - j; k++)
+            {
+                if (ventasCopia[k] < ventasCopia[k + 1])
+                {
+                    int tempVentas = ventasCopia[k];
+                    ventasCopia[k] = ventasCopia[k + 1];
+                    ventasCopia[k + 1] = tempVentas;
+
+                    String tempNombre = nombresCopia[k];
+                    nombresCopia[k] = nombresCopia[k + 1];
+                    nombresCopia[k + 1] = tempNombre;
+
+                    int tempCodigo = codigosCopia[k];
+                    codigosCopia[k] = codigosCopia[k + 1];
+                    codigosCopia[k + 1] = tempCodigo;
+                }
+            }
+        }
+
+        //muestra la lista, no es parte del codigo que los determina
+        System.out.println("--- Productos Más Vendidos ---");
+        System.out.println("Ranking | Código | Producto | Ventas Totales");
+        System.out.println("---------------------------------------------");
+        for (int j = 0; j < i; j++)
+        //esto es para los productos que solo tienen 1
+        {
+            if (ventasCopia[j] > 0)
+            {
+                System.out.println((j + 1) + " |" + codigosCopia[j] + " | " + nombresCopia[j] + " | " + ventasCopia[j]);
+            }
+        }
+        System.out.println("---------------------------------------------");
     }
 
-    private static void MenosVendidos() {
-        System.out.println("Mostrando menos vendidos");
+
+
+    private static void MenosVendidos()
+    {
+        System.out.println("Mostrando productos menos vendidos");
+        //tiene validacion igual
+        if (i == 0)
+        {
+            System.out.println("No hay productos registrados.");
+            return;
+        }
+
+        // Copias de los arreglos que si podemos modificar
+        int[] codigosCopia = new int[i];
+        String[] nombresCopia = new String[i];
+        int[] ventasCopia = new int[i];
+
+        for (int j = 0; j < i; j++)
+        {
+            codigosCopia[j] = j;
+            nombresCopia[j] = NomProd[j];
+            ventasCopia[j] = cantidadventa[j];
+        }
+
+        // Ordena descendentemente
+        for (int j = 0; j < i - 1; j++)
+        {
+            for (int k = 0; k < i - 1 - j; k++)
+            {
+                if (ventasCopia[k] > ventasCopia[k + 1])
+                {
+                    int tempVentas = ventasCopia[k];
+                    ventasCopia[k] = ventasCopia[k + 1];
+                    ventasCopia[k + 1] = tempVentas;
+
+                    String tempNombre = nombresCopia[k];
+                    nombresCopia[k] = nombresCopia[k + 1];
+                    nombresCopia[k + 1] = tempNombre;
+
+                    int tempCodigo = codigosCopia[k];
+                    codigosCopia[k] = codigosCopia[k + 1];
+                    codigosCopia[k + 1] = tempCodigo;
+                }
+            }
+        }
+
+
+        System.out.println("--- Ranking de Productos Menos Vendidos ---");
+        System.out.println("Ranking | Código | Producto | Ventas Totales");
+        System.out.println("---------------------------------------------");
+        for (int j = 0; j < i; j++)
+        {
+            System.out.println((j + 1) + " | " + codigosCopia[j] + " | " + nombresCopia[j] + " | " + ventasCopia[j]);
+        }
+        System.out.println("---------------------------------------------");
     }
 
     private static void ReportaVentas() {
@@ -210,7 +316,7 @@ public class MyOwnShop {
             int vent = 0;
             int[] ventasemanal = new int[4];
             int TotalVenta = 0;
-            System.out.println("Ingrese el código del producto que desee regsitrar para la venta mensual");
+            System.out.println("Ingrese el código del producto que desee registrar para la venta mensual");
             int codigo = sc.nextInt();
             sc.nextLine();
             System.out.println("Producto: " + NomProd[codigo]);
@@ -279,27 +385,45 @@ public class MyOwnShop {
         int Código = 0;
         System.out.println("Bienvenido al reporte de ventas");
         int desci;
-        do {
-            System.out.println("Por favor ingresa el código del producto vendido:");
-            Scanner scanner = new Scanner(System.in);
-            Código = scanner.nextInt();
-            scanner.nextLine();
+        Scanner scanner =new Scanner(System.in);
+        do
+        {
+
+        System.out.println("Por favor ingresa el código del producto vendido:");
+        Código = scanner.nextInt();
+        scanner.nextLine();
+
+
+        if (Código < 0 || Código >= i || NomProd[Código] == null)
+        {
+            System.out.println("Codigo no valido");
+        }
+        else
+        {
             NomProduc = NomProd[Código];
-            PrecProduc = PSug[Código];
-            System.out.println("¿deseas ingresar otro producto?\n1. si\n2. no");
-            desci = scanner.nextInt();
-            scanner.nextLine();
+            PrecProduc = PrecProd[Código];
+            System.out.println("Producto agregado: " + NomProduc + " - $" + PrecProduc);
             arrventa[vent] = NomProduc + " " + PrecProduc + ";";
             vent++;
+            cantidadventa[Código]++;
+            ExistProd[Código]--;
         }
-        while (desci == 1);
-        for (e = 0; e < vent; e++) {
-            System.out.println(arrventa[e]);
-        }
-        cantidadventa[Código]++;
-    }
 
-    private static void Inventario() {
+        System.out.println("¿Deseas ingresar otro producto?\n1. si\n2. no");
+        desci = scanner.nextInt();
+        scanner.nextLine();
+    }
+        while (desci == 1);
+
+        System.out.println("--- Venta Registrada ---");
+        for (e = 0; e < vent; e++) {
+        System.out.println(arrventa[e]);
+    }
+        guardararchivo();
+}
+
+
+private static void Inventario() {
         Scanner sc = new Scanner(System.in);
         while (Log == 0) {
             LoginBasico();
@@ -404,7 +528,7 @@ public class MyOwnShop {
                 ExistProd[i] = sc.nextInt();
                 sc.nextLine();
                 producto[i] = "Código: " + i + " | " + "Nombre: " + NomProd[i] + " | " + "Precio: " + PrecProd[i] + " | " + "Cantidad: " + ExistProd[i] + " | " + "Precio sugerido: " + PSug[i] + " | " + "Veces vendido: " + cantidadventa[i];
-                System.out.println("¿Desea agregar más prodcutos?\n1. Si\n2. No");
+                System.out.println("¿Desea agregar más productos?\n1. Si\n2. No");
                 int Elec = sc.nextInt();
                 sc.nextLine();
                 if (Elec == 2) {
