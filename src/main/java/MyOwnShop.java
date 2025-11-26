@@ -125,8 +125,33 @@ public class MyOwnShop {
         System.out.println( "El total a pagar es: " + total);
     }
 
-    private static void ReportedeVentas() {
-
+    private static void ReportedeVentas()
+    {
+        int vent = 0;
+        int Código = 0;
+        System.out.println("Bienvenido al reporte de ventas");
+        int desci;
+        do
+        {
+            System.out.println("Por favor ingresa el código del producto vendido:");
+            Scanner scanner = new Scanner(System.in);
+            Código = scanner.nextInt();
+            scanner.nextLine();
+            NomProduc = NomProd [ Código ];
+            PrecProduc = PSug[ Código ];
+            System.out.println("¿deseas ingresar otro producto?\n1. si\n2. no");
+            desci = scanner.nextInt();
+            scanner.nextLine();
+            arrventa[ vent ] = NomProduc +" "+ PrecProduc + ";";
+            vent++;
+        }
+        while (desci==1);
+        for (e = 0; e < vent; e++)
+        {
+            System.out.println(arrventa[ e ]);
+        }
+        cantidadventa [ Código ]++;
+        guardarreporte();
     }
 
     private static void Inventario() {
@@ -259,8 +284,36 @@ public class MyOwnShop {
         }
     }
 
-    private static void BadPasword( ) {
+    private static void BadPasword( )
+    {
+        System.out.println("Usuario o contraseña incorrectos.");
+        System.out.println("¿Deseas salir?\n[1] Sí\n[2] No\"");
+        Scanner scanner = new Scanner(System.in);
+        int z = scanner.nextInt();
+        if (z == 1)
+        {
+            int opcmenu;
+            Scanner scanner1 = new Scanner(System.in);
+            System.out.println("¿A qué módulo deseas ingresar?\n1. Inventario\n2. Ventas\n3. Estadisticas\n4. Salir");
+            opcmenu = scanner1.nextInt();
+            switch (opcmenu)
+            {
+                case 1:
+                    Inventario();
+                    break;
+                case 2:
+                    Ventas();
+                    break;
+                case 3:
+                    Estadisticas();
+                    break;
+                case 4:
+                    System.out.println("Saliendo...");
+                default:
+                    break;
+            }
 
+        }
     }
 
     private static void cargararchivo(){
