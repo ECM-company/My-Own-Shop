@@ -125,9 +125,9 @@ public class MyOwnShop {
         System.out.println( "El total a pagar es: " + total);
     }
 
+
     private static void ReportedeVentas()
     {
-
         int vent = 0;
         int Código = 0;
         System.out.println("Bienvenido al reporte de ventas");
