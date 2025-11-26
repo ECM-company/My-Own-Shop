@@ -1,7 +1,361 @@
 import java.io.*;
 import java.util.Scanner;
 public class MyOwnShop {
-    public static void main(String[] args) {
+        public static int i = 0;
+        public static int e = 0;
+        public static int[] cantidadventa = new int[100];
+        public static int Log = 0;
+        public static String[] producto = new String[100];
+        public static String[] NomProd = new String[100];
+        public static String[] arrventa = new String[100];
+        public static double [] PrecProd = new double[100];
+        public static double PrecProduc;
+        public static String NomProduc;
+        public static int[] ExistProd = new int[100];
+        public static double[] PSug = new double[100];
 
+        public static void main(String[] args) {
+            // ------------------Menú------------------//
+            cargararchivo();
+            Scanner sc = new Scanner(System.in);
+            System.out.println( " _____ ______       ___    ___      ________  ___       __   ________           ________  ___  ___  ________  ________   \n" +
+                    "|\\   _ \\  _   \\    |\\  \\  /  /|    |\\   __  \\|\\  \\     |\\  \\|\\   ___  \\        |\\   ____\\|\\  \\|\\  \\|\\   __  \\|\\   __  \\  \n" +
+                    "\\ \\  \\\\\\__\\ \\  \\   \\ \\  \\/  / /    \\ \\  \\|\\  \\ \\  \\    \\ \\  \\ \\  \\\\ \\  \\       \\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \n" +
+                    " \\ \\  \\\\|__| \\  \\   \\ \\    / /      \\ \\  \\\\\\  \\ \\  \\  __\\ \\  \\ \\  \\\\ \\  \\       \\ \\_____  \\ \\   __  \\ \\  \\\\\\  \\ \\   ____\\\n" +
+                    "  \\ \\  \\    \\ \\  \\   \\/  /  /        \\ \\  \\\\\\  \\ \\  \\|\\__\\_\\  \\ \\  \\\\ \\  \\       \\|____|\\  \\ \\  \\ \\  \\ \\  \\\\\\  \\ \\  \\___|\n" +
+                    "   \\ \\__\\    \\ \\__\\__/  / /           \\ \\_______\\ \\____________\\ \\__\\\\ \\__\\        ____\\_\\  \\ \\__\\ \\__\\ \\_______\\ \\__\\   \n" +
+                    "    \\|__|     \\|__|\\___/ /             \\|_______|\\|____________|\\|__| \\|__|       |\\_________\\|__|\\|__|\\|_______|\\|__|   \n" +
+                    "                  \\|___|/                                                         \\|_________|                           \n" +
+                    "                                                                                                           " );
+            System.out.println( "----------------------------------------------------------------------------------------------------------------------------" );
+            int opcMenu = 0;
+            while ( opcMenu != 4 ) {
+                System.out.println("¿A qué módulo deseas ingresar?\n1. Inventario\n2. Ventas\n3. Estadisticas\n4. Salir");
+                opcMenu = sc.nextInt();
+                switch (opcMenu) {
+                    case 1:
+                        Inventario();
+                        break;
+                    case 2:
+                        Ventas();
+                        break;
+                    case 3:
+                        Estadisticas();
+                        break;
+                    case 4:
+                        System.out.println( "Saliendo..." );
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private static void Estadisticas() {
+            //--------Ingreso al módulo de estadisticas----------------//
+            //---Login básico para que solo el administrador pueda entrar---//
+            while ( Log == 0 ){
+                LoginBasico();
+            }
+    }
+
+    private static void ReporteSemanal() {
+        Scanner sc = new Scanner(System.in);
+        int vent = 0;
+        int[] ventadiaria = new int[ 7 ];
+        int TotalVenta = 0;
+        System.out.println("Ingrese el código del producto que desee regsitrar la venta semanal");
+        int codigo = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Producto: " + NomProd[codigo]);
+        System.out.println("----------------------------------------");
+        String[] dia = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+        for (int j = 0; j < dia.length; j++) {
+            System.out.println("Ingrese la venta del producto durante el día " + dia[ j ]);
+            ventadiaria[ vent ] = sc.nextInt();
+            sc.nextLine();
+            TotalVenta += ventadiaria [ vent ];
+            vent++;
+        }
+        System.out.println( "La venta semanal del producto: " + NomProd [ codigo ] + " es de: " + TotalVenta);
+    }
+
+    private static void Ventas() {
+        Scanner sc = new Scanner(System.in);
+        int opcVentas = 0;
+        while ( opcVentas != 3 ) {
+            System.out.println("Bienvenido al módulo de ventas, ¿qué desea realizar?\n 1. Ir al reporte de ventas\n 2. Ir a la calculadora\n 3. Salir");
+            opcVentas = sc.nextInt();
+            sc.nextLine();
+            switch (opcVentas) {
+                case 1:
+                    ReportedeVentas();
+                    break;
+                case 2:
+                    Calculadora();
+                    break;
+                case 3:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción inválida");
+                    break;
+            }
+        }
+    }
+
+    private static void Calculadora() {
+        Scanner sc = new Scanner(System.in);
+        int count = 0;
+        double[] suma =  new double[ 30 ];
+        int o = 0;
+        while ( o == 0 ){
+            System.out.print("Ingrese el valor del producto: ");
+            suma[ count ] = sc.nextDouble();
+            count++;
+            System.out.println( "¿Deseas agregar más productos?\n1. Si\n2. No" );
+            int opcCalculadora = sc.nextInt();
+            if ( opcCalculadora == 2 ){
+                o = 1;
+            }
+        }
+        double total = 0;
+        for (int j = 0; j < count; j++) {
+            total += suma[ j ];
+        }
+        System.out.println( "El total a pagar es: " + total);
+    }
+
+    private static void ReportedeVentas() {
+
+    }
+
+    private static void Inventario() {
+        Scanner sc = new Scanner(System.in);
+        while ( Log == 0 ){
+            LoginBasico();
+        }
+        int opcInventario = 0;
+        while (opcInventario != 4 ) {
+            System.out.println("¿Qué desea realizar?\n1. Ver productos\n2. Eliminar productos\n3. Gestionar inventario\n4. Salir");
+            opcInventario = sc.nextInt();
+            switch (opcInventario) {
+                case 1:
+                    Productos();
+                    break;
+                case 2:
+                    EliminarProductos();
+                    break;
+                case 3:
+                    GestionarInventario();
+                    break;
+                case 4:
+                    System.out.println( "Saliendo..." );
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private static void GestionarInventario() {
+
+    }
+
+    private static void EliminarProductos() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print( "Ingresa el código del producto que desees borrar: ");
+        int codigo = sc.nextInt();
+        sc.nextLine();
+        if (codigo < 0 || codigo >= i){
+            System.out.println( "Producto no encontrado." );
+            return;
+        }
+        System.out.println( "¿Estas seguro?\n1. Sí\n2. No" );
+        int estado = sc.nextInt();
+        sc.nextLine();
+        if (estado == 1){
+            for (int j = codigo; j < i - 1; j++) {
+                NomProd[ j ] = NomProd[ j + 1 ];
+                PrecProd[ j ] = PrecProd[ j + 1 ];
+                ExistProd[ j ] = ExistProd[ j + 1 ];
+                PSug[ j ] = PSug[ j + 1 ];
+                producto[ j ] = "Código: "+ j + " | " + "Nombre: " + NomProd[ j ] + " | " + "Precio: " + PrecProd[ j ] + " | " + "Cantidad: " + ExistProd[ j ] + " | " + "Precio sugerido: " + PSug[ j ];
+            }
+            NomProd[i - 1] = null;
+            PrecProd[i - 1] = 0;
+            ExistProd[i - 1] = 0;
+            PSug[i - 1] = 0;
+            producto[ i - 1] = null;
+            i--;
+        }
+        System.out.println( "Producto eliminado correctamente" );
+        guardararchivo();
+    }
+
+    private static void Productos() {
+        Scanner sc = new Scanner(System.in);
+        int j = 0;
+        int k = 0;
+        System.out.println("¿Qué deseas hacer?\n1. Ver los productos registrados\n2. Agregar productos");
+        int opcInventario = sc.nextInt();
+        sc.nextLine();
+        if (opcInventario == 2) {
+            while (j == 0) {
+                System.out.println("Ingresa el nombre del producto: ");
+                NomProd[i] = sc.nextLine();
+                System.out.println("Ingresa el precio del producto: ");
+                PrecProd[i] = sc.nextInt();
+                sc.nextLine();
+                PSug[i] = (double) (PrecProd[i] + (PrecProd[i] * 0.30));
+                System.out.println("Ingresa el número de existencias del producto: ");
+                ExistProd[i] = sc.nextInt();
+                sc.nextLine();
+                producto[i] = "Código: " + i + " | " + "Nombre: " + NomProd[i] + " | " + "Precio: " + PrecProd[i] + " | " + "Cantidad: " + ExistProd[i] + " | " + "Precio sugerido: " + PSug[i] + " | " + "Veces vendido: " + cantidadventa [ i ];
+                System.out.println("¿Desea agregar más prodcutos?\n1. Si\n2. No");
+                int Elec = sc.nextInt();
+                sc.nextLine();
+                if (Elec == 2) {
+                    j++;
+                }
+                i++;
+            }
+            for (k = 0; k < i; k++) {
+                System.out.println(producto[ k ]);
+            }
+            guardararchivo();
+        } else {
+            if ( producto [ k ] == null){
+                System.out.println( "No hay nngún producto registrado" );
+            } else {
+                for (k = 0; k < i; k++) {
+                    System.out.println(producto[ k ]);
+                }
+            }
+        }
+        if ( opcInventario != 1  && opcInventario != 2){
+            System.out.println( "Opción inválida" );
+            return;
+        }
+    }
+
+    private static void LoginBasico( ) {
+        Scanner sc = new Scanner(System.in);
+        Log = 0;
+        String usuarioCorrecto = "admin";
+        String passwordCorrecta = "1234";
+        System.out.print("Usuario: ");
+        String usuario = sc.nextLine();
+        System.out.print("Contraseña: ");
+        String pass = sc.nextLine();
+        if (usuario.equals(usuarioCorrecto) && pass.equals(passwordCorrecta)) {
+            System.out.println("Acceso permitido.");
+            Log = 1;
+
+        }
+        else
+        {
+            BadPasword();
+
+        }
+    }
+
+    private static void BadPasword( ) {
+
+    }
+
+    private static void cargararchivo(){
+        try {
+            File file = new File("Productos.txt");
+            if (!file.exists()) {
+                System.out.println("No hay archivo de productos aún.");
+                return;
+            }
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String linea;
+            i = 0;
+            br.mark(500);
+            linea = br.readLine();
+            if (linea != null && linea.startsWith("Código:")) {
+                br.reset();
+            }
+            while ((linea = br.readLine()) != null) {
+                if (linea.trim().isEmpty()) continue;
+                String[] partes = linea.split(" \\| ");
+                if (partes.length != 5) continue;
+                int codigo = Integer.parseInt(partes[0].replace("Código:", "").trim());
+                String nombre = partes[1].replace("Nombre:", "").trim();
+                double precio = Double.parseDouble(partes[2].replace("Precio:", "").trim());
+                int cantidad = Integer.parseInt(partes[3].replace("Cantidad:", "").trim());
+                double sugerido = Double.parseDouble(partes[4].replace("Precio sugerido:", "").trim());
+                NomProd[i] = nombre;
+                PrecProd[i] = precio;
+                ExistProd[i] = cantidad;
+                PSug[i] = sugerido;
+                producto[i] = linea;
+                i++;
+            }
+            br.close();
+            System.out.println("Productos cargados correctamente desde el archivo.");
+        } catch (Exception e) {
+            System.out.println("Error al cargar productos: " + e.getMessage());
+        }
+    }
+
+    private static void guardararchivo() {
+        try {
+            FileWriter fw = new FileWriter("Productos.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println("=== LISTA DE PRODUCTOS REGISTRADOS ===");
+            for (int j = 0; j < i; j++) {
+                if (producto[j] != null && !producto[j].isEmpty())
+                    pw.println(producto[j]);
+            }
+            pw.close();
+            System.out.println("Producto guardado correctamente");
+        } catch (Exception e) {
+            System.out.println("Error al guardar archivo: " + e.getMessage());
+        }
+    }
+
+    private static void cargarreporte(){
+        try {
+            File file = new File( "Reporte.txt" );
+            if ( !file.exists() ){
+                System.out.println( "Archivo no encontrado" );
+                return;
+            }
+            BufferedReader bf = new BufferedReader( new FileReader( file ) );
+            String linea;
+            linea = bf.readLine();
+            while ( linea != null ) {
+                if (linea.trim().isEmpty()) continue;
+                String[] parts = linea.split(";");
+                if (parts.length != 2) continue;
+                String nombre = parts[0].replace("Nombre: ", "").trim();
+                double precio = Double.parseDouble( parts [ 1 ].replace( "Precio: ", "").trim());
+                NomProduc = nombre;
+                PrecProduc = precio;
+                arrventa [ e ] = linea;
+                e++;
+            }
+            bf.close();
+            System.out.println( "Registro cargado correctamente" );
+        } catch ( Exception e){
+            System.out.println( "Error al cargar el reporte: " + e.getMessage());
+        }
+    }
+
+    private static void guardarreporte(){
+        try {
+            FileWriter fw = new FileWriter( "Reporte.txt" );
+            PrintWriter pw = new PrintWriter( fw );
+            for (int j = 0; j < e; j++) {
+                if ( arrventa[ j ] != null && !arrventa[ j ].isEmpty())
+                    pw.println(arrventa[ j ]);
+            }
+            pw.close();
+        } catch ( Exception e){
+            System.out.println( "Error: " + e.getMessage());
+        }
     }
 }
