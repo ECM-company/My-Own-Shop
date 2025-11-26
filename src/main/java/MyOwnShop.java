@@ -1,61 +1,151 @@
 import java.io.*;
 import java.util.Scanner;
 public class MyOwnShop {
-        public static int i = 0;
-        public static int e = 0;
-        public static int[] cantidadventa = new int[100];
-        public static int Log = 0;
-        public static String[] producto = new String[100];
-        public static String[] NomProd = new String[100];
-        public static String[] arrventa = new String[100];
-        public static double [] PrecProd = new double[100];
-        public static double PrecProduc;
-        public static String NomProduc;
-        public static int[] ExistProd = new int[100];
-        public static double[] PSug = new double[100];
+    public static int i = 0;
+    public static int e = 0;
+    public static int[] cantidadventa = new int[100];
+    public static int Log = 0;
+    public static String[] producto = new String[100];
+    public static String[] NomProd = new String[100];
+    public static String[] arrventa = new String[100];
+    public static double[] PrecProd = new double[100];
+    public static double PrecProduc;
+    public static String NomProduc;
+    public static int[] ExistProd = new int[100];
+    public static double[] PSug = new double[100];
 
-        public static void main(String[] args) {
-            // ------------------Menú------------------//
-            cargararchivo();
-            Scanner sc = new Scanner(System.in);
-            System.out.println( " _____ ______       ___    ___      ________  ___       __   ________           ________  ___  ___  ________  ________   \n" +
-                    "|\\   _ \\  _   \\    |\\  \\  /  /|    |\\   __  \\|\\  \\     |\\  \\|\\   ___  \\        |\\   ____\\|\\  \\|\\  \\|\\   __  \\|\\   __  \\  \n" +
-                    "\\ \\  \\\\\\__\\ \\  \\   \\ \\  \\/  / /    \\ \\  \\|\\  \\ \\  \\    \\ \\  \\ \\  \\\\ \\  \\       \\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \n" +
-                    " \\ \\  \\\\|__| \\  \\   \\ \\    / /      \\ \\  \\\\\\  \\ \\  \\  __\\ \\  \\ \\  \\\\ \\  \\       \\ \\_____  \\ \\   __  \\ \\  \\\\\\  \\ \\   ____\\\n" +
-                    "  \\ \\  \\    \\ \\  \\   \\/  /  /        \\ \\  \\\\\\  \\ \\  \\|\\__\\_\\  \\ \\  \\\\ \\  \\       \\|____|\\  \\ \\  \\ \\  \\ \\  \\\\\\  \\ \\  \\___|\n" +
-                    "   \\ \\__\\    \\ \\__\\__/  / /           \\ \\_______\\ \\____________\\ \\__\\\\ \\__\\        ____\\_\\  \\ \\__\\ \\__\\ \\_______\\ \\__\\   \n" +
-                    "    \\|__|     \\|__|\\___/ /             \\|_______|\\|____________|\\|__| \\|__|       |\\_________\\|__|\\|__|\\|_______|\\|__|   \n" +
-                    "                  \\|___|/                                                         \\|_________|                           \n" +
-                    "                                                                                                           " );
-            System.out.println( "----------------------------------------------------------------------------------------------------------------------------" );
-            int opcMenu = 0;
-            while ( opcMenu != 4 ) {
-                System.out.println("¿A qué módulo deseas ingresar?\n1. Inventario\n2. Ventas\n3. Estadisticas\n4. Salir");
-                opcMenu = sc.nextInt();
-                switch (opcMenu) {
-                    case 1:
-                        Inventario();
-                        break;
-                    case 2:
-                        Ventas();
-                        break;
-                    case 3:
-                        Estadisticas();
-                        break;
-                    case 4:
-                        System.out.println( "Saliendo..." );
-                    default:
-                        break;
-                }
+    public static void main(String[] args) {
+        // ------------------Menú------------------//
+        cargararchivo();
+        Scanner sc = new Scanner(System.in);
+        System.out.println(" _____ ______       ___    ___      ________  ___       __   ________           ________  ___  ___  ________  ________   \n" +
+                "|\\   _ \\  _   \\    |\\  \\  /  /|    |\\   __  \\|\\  \\     |\\  \\|\\   ___  \\        |\\   ____\\|\\  \\|\\  \\|\\   __  \\|\\   __  \\  \n" +
+                "\\ \\  \\\\\\__\\ \\  \\   \\ \\  \\/  / /    \\ \\  \\|\\  \\ \\  \\    \\ \\  \\ \\  \\\\ \\  \\       \\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \n" +
+                " \\ \\  \\\\|__| \\  \\   \\ \\    / /      \\ \\  \\\\\\  \\ \\  \\  __\\ \\  \\ \\  \\\\ \\  \\       \\ \\_____  \\ \\   __  \\ \\  \\\\\\  \\ \\   ____\\\n" +
+                "  \\ \\  \\    \\ \\  \\   \\/  /  /        \\ \\  \\\\\\  \\ \\  \\|\\__\\_\\  \\ \\  \\\\ \\  \\       \\|____|\\  \\ \\  \\ \\  \\ \\  \\\\\\  \\ \\  \\___|\n" +
+                "   \\ \\__\\    \\ \\__\\__/  / /           \\ \\_______\\ \\____________\\ \\__\\\\ \\__\\        ____\\_\\  \\ \\__\\ \\__\\ \\_______\\ \\__\\   \n" +
+                "    \\|__|     \\|__|\\___/ /             \\|_______|\\|____________|\\|__| \\|__|       |\\_________\\|__|\\|__|\\|_______|\\|__|   \n" +
+                "                  \\|___|/                                                         \\|_________|                           \n" +
+                "                                                                                                           ");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+        int opcMenu = 0;
+        while (opcMenu != 4) {
+            System.out.println("¿A qué módulo deseas ingresar?\n1. Inventario\n2. Ventas\n3. Estadisticas\n4. Salir");
+            opcMenu = sc.nextInt();
+            switch (opcMenu) {
+                case 1:
+                    Inventario();
+                    break;
+                case 2:
+                    Ventas();
+                    break;
+                case 3:
+                    Estadisticas();
+                    break;
+                case 4:
+                    System.out.println("Saliendo...");
+                default:
+                    break;
             }
         }
+    }
 
-        private static void Estadisticas() {
-            //--------Ingreso al módulo de estadisticas----------------//
-            //---Login básico para que solo el administrador pueda entrar---//
-            while ( Log == 0 ){
-                LoginBasico();
+    private static void Estadisticas() {
+        //--------Ingreso al módulo de estadisticas----------------//
+        //---Login básico para que solo el administrador pueda entrar---//
+        while (Log == 0) {
+            LoginBasico();
+        }
+        Scanner sc = new Scanner(System.in);
+        int seleccion = 0;
+        while (seleccion != 4) {
+            System.out.println("¿A dónde quieres ir?");
+            System.out.println("[1] Reporte de ventas.");
+            System.out.println("[2] Datos del producto.");
+            System.out.println("[3] Competidores.");
+            System.out.println("[4] Salir.");
+            seleccion = sc.nextInt();
+            sc.nextLine();
+            switch (seleccion) {
+                case 1:
+                    ReportaVentas();
+                    break;
+                case 2:
+                    DatosDelProducto();
+                    break;
+                case 3:
+                    Competidores();
+                    break;
+                case 4:
+                    System.out.println("Saliendo.....");
+                    break;
+                default:
+                    System.out.println("Elige una opción correcta.");
+                    break;
             }
+        }
+    }
+
+    private static void Competidores() {
+
+    }
+
+    private static void DatosDelProducto()
+    {
+        int elegProd = 0;
+        while ( elegProd != 3) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Elige qué productos quieres visualizar");
+            System.out.println("[1] Más vendidos");
+            System.out.println("[2] Menos vendidos");
+            System.out.println("[3] Regresar");
+            elegProd = sc.nextInt();
+
+            switch (elegProd) {
+                case 1:
+                    MasVendidos();
+                    break;
+                case 2:
+                    MenosVendidos();
+                    break;
+                case 3:
+                    Estadisticas();
+                default:
+                    System.out.println("Ingresa opciones válidas");
+                    break;
+            }
+        }
+    }
+
+    private static void MasVendidos() {
+        System.out.println( "Mostrando productos más vendidos" );
+    }
+
+    private static void MenosVendidos() {
+
+    }
+
+    private static void ReportaVentas() {
+        Scanner sc = new Scanner(System.in);
+        int opcDeTiempo = 0;
+        while ( opcDeTiempo != 3) {
+            System.out.println("¿En qué rango de tiempo deseas ver?");
+            System.out.println("[1] Semanal");
+            System.out.println("[2] Mensual");
+            System.out.println("[3] Salir");
+            opcDeTiempo = sc.nextInt();
+            sc.nextLine();
+            switch (opcDeTiempo) {
+                case 1:
+                    ReporteSemanal();
+                    break;
+                case 2:
+                    ReporteMensual();
+                    break;
+                default:
+                    System.out.println("Ingresa opciones válidas.");
+            }
+        }
     }
 
     private static void ReporteSemanal() {
@@ -77,6 +167,29 @@ public class MyOwnShop {
             vent++;
         }
         System.out.println( "La venta semanal del producto: " + NomProd [ codigo ] + " es de: " + TotalVenta);
+    }
+
+    private static void ReporteMensual() {
+        {
+            Scanner sc = new Scanner(System.in);
+            int vent = 0;
+            int[] ventasemanal = new int[ 4 ];
+            int TotalVenta = 0;
+            System.out.println("Ingrese el código del producto que desee regsitrar para la venta mensual");
+            int codigo = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Producto: " + NomProd[codigo]);
+            System.out.println("----------------------------------------");
+            String[] semanas = {"Semana 1", "Semana 2", "Semana 3", "Semana 4"};
+            for (int j = 0; j < semanas.length; j++) {
+                System.out.println("Ingrese la venta del producto durante la " + semanas[j]);
+                ventasemanal[vent] = sc.nextInt();
+                sc.nextLine();
+                TotalVenta += ventasemanal[vent];
+                vent++;
+            }
+            System.out.println( "La venta mensual del producto: " + NomProd [ codigo ] + " es de: " + TotalVenta);
+        }
     }
 
     private static void Ventas() {
@@ -184,7 +297,30 @@ public class MyOwnShop {
     }
 
     private static void GestionarInventario() {
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingresa el código del producto:");
+        int codigo = sc.nextInt();
+        sc.nextLine();
+        System.out.println(producto[codigo]);
+        if (producto[codigo] == null) {
+            System.out.println("Producto no encontrado.");
+            return;
+        }
+        System.out.println("¿Deseas actualizar el precio del producto?\n[1] Sí\n[2] No");
+        int opcactualizar = sc.nextInt();
+        sc.nextLine();
+        switch (opcactualizar) {
+            case 1:
+                System.out.print("Ingrese el nuevo precio del producto: ");
+                PrecProd[codigo] = sc.nextDouble();
+                break;
+            case 2:
+                System.out.println("Saliendo.........");
+                break;
+            default:
+                break;
+        }
+        guardararchivo();
     }
 
     private static void EliminarProductos() {
