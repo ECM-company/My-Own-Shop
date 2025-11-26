@@ -122,7 +122,7 @@ public class MyOwnShop {
     }
 
     private static void MenosVendidos() {
-
+        System.out.println( "Mostrando menos vendidos" );
     }
 
     private static void ReportaVentas() {
