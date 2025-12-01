@@ -62,7 +62,7 @@ public class MyOwnShop {
         while (seleccion != 4) {
             System.out.println("¿A dónde quieres ir?");
             System.out.println("[1] Reporte de ventas.");
-            System.out.println("[2] Datos del producto.");
+            System.out.println("[2] Productos destacados. ");
             System.out.println("[3] Competidores.");
             System.out.println("[4] Salir.");
             seleccion = sc.nextInt();
@@ -338,7 +338,7 @@ public class MyOwnShop {
         Scanner sc = new Scanner(System.in);
         int opcVentas = 0;
         while (opcVentas != 3) {
-            System.out.println("Bienvenido al módulo de ventas, ¿qué desea realizar?\n 1. Ir al reporte de ventas\n 2. Ir a la calculadora\n 3. Salir");
+            System.out.println("Bienvenido al módulo de ventas, ¿qué desea realizar?\n 1. Registrar ventas\n 2. Ir a la calculadora\n 3. Salir");
             opcVentas = sc.nextInt();
             sc.nextLine();
             switch (opcVentas) {
@@ -397,7 +397,7 @@ public class MyOwnShop {
 
         if (Código < 0 || Código >= i || NomProd[Código] == null)
         {
-            System.out.println("Codigo no valido");
+            System.out.println("Código no valido");
         }
         else
         {
@@ -431,7 +431,7 @@ private static void Inventario() {
         }
         int opcInventario = 0;
         while (opcInventario != 4) {
-            System.out.println("¿Qué desea realizar?\n1. Ver productos\n2. Eliminar productos\n3. Gestionar inventario\n4. Salir");
+            System.out.println("¿Qué desea realizar?\n1. Productos\n2. Eliminar productos\n3. Cambiar precio de un producto\n4. Salir");
             opcInventario = sc.nextInt();
             switch (opcInventario) {
                 case 1:
