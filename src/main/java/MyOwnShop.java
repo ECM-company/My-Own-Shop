@@ -28,6 +28,7 @@ public class MyOwnShop {
                 "                  \\|___|/                                                         \\|_________|                           \n" +
                 "                                                                                                           ");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+
         int opcMenu = 0;
         while (opcMenu != 4) {
             System.out.println("¿A qué módulo deseas ingresar?\n1. Inventario\n2. Ventas\n3. Estadisticas\n4. Salir");
@@ -456,6 +457,7 @@ private static void Inventario() {
         System.out.println("Ingresa el código del producto:");
         int codigo = sc.nextInt();
         sc.nextLine();
+
         System.out.println(producto[codigo]);
         if (producto[codigo] == null) {
             System.out.println("Producto no encontrado.");
@@ -464,10 +466,21 @@ private static void Inventario() {
         System.out.println("¿Deseas actualizar el precio del producto?\n[1] Sí\n[2] No");
         int opcactualizar = sc.nextInt();
         sc.nextLine();
+
         switch (opcactualizar) {
             case 1:
                 System.out.print("Ingrese el nuevo precio del producto: ");
                 PrecProd[codigo] = sc.nextDouble();
+                sc.nextLine();
+                PSug[codigo] = PrecProd[codigo] + (PrecProd[codigo] * 0.30);
+                producto[codigo] = "Código: " + codigo + " | " +
+                        "Nombre: " + NomProd[codigo] + " | " +
+                        "Precio: " + PrecProd[codigo] + " | " +
+                        "Cantidad: " + ExistProd[codigo] + " | " +
+                        "Precio sugerido: " + PSug[codigo] + " | " +
+                        "Veces vendido: " + cantidadventa[codigo];
+                System.out.println("Precio actualizado correctamente.");
+
                 break;
             case 2:
                 System.out.println("Saliendo.........");
