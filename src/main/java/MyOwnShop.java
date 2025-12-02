@@ -298,17 +298,21 @@ public class MyOwnShop {
         System.out.println("Ingrese el código del producto que desee regsitrar la venta semanal");
         int codigo = sc.nextInt();
         sc.nextLine();
-        System.out.println("Producto: " + NomProd[codigo]);
-        System.out.println("----------------------------------------");
-        String[] dia = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
-        for (int j = 0; j < dia.length; j++) {
-            System.out.println("Ingrese la venta del producto durante el día " + dia[j]);
-            ventadiaria[vent] = sc.nextInt();
-            sc.nextLine();
-            TotalVenta += ventadiaria[vent];
-            vent++;
+        if (producto[codigo] == null) {
+            System.out.println("Producto no encontrado");
+        } else {
+            System.out.println("Producto: " + NomProd[codigo]);
+            System.out.println("----------------------------------------");
+            String[] dia = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+            for (int j = 0; j < dia.length; j++) {
+                System.out.println("Ingrese la venta del producto durante el día " + dia[j]);
+                ventadiaria[vent] = sc.nextInt();
+                sc.nextLine();
+                TotalVenta += ventadiaria[vent];
+                vent++;
+            }
+            System.out.println("La venta semanal del producto: " + NomProd[codigo] + " es de: " + TotalVenta);
         }
-        System.out.println("La venta semanal del producto: " + NomProd[codigo] + " es de: " + TotalVenta);
     }
 
     private static void ReporteMensual() {
@@ -320,17 +324,21 @@ public class MyOwnShop {
             System.out.println("Ingrese el código del producto que desee registrar para la venta mensual");
             int codigo = sc.nextInt();
             sc.nextLine();
-            System.out.println("Producto: " + NomProd[codigo]);
-            System.out.println("----------------------------------------");
-            String[] semanas = {"Semana 1", "Semana 2", "Semana 3", "Semana 4"};
-            for (int j = 0; j < semanas.length; j++) {
-                System.out.println("Ingrese la venta del producto durante la " + semanas[j]);
-                ventasemanal[vent] = sc.nextInt();
-                sc.nextLine();
-                TotalVenta += ventasemanal[vent];
-                vent++;
+            if (producto[codigo] == null) {
+                System.out.println("Producto no encontrado");
+            } else {
+                System.out.println("Producto: " + NomProd[codigo]);
+                System.out.println("----------------------------------------");
+                String[] semanas = {"Semana 1", "Semana 2", "Semana 3", "Semana 4"};
+                for (int j = 0; j < semanas.length; j++) {
+                    System.out.println("Ingrese la venta del producto durante la " + semanas[j]);
+                    ventasemanal[vent] = sc.nextInt();
+                    sc.nextLine();
+                    TotalVenta += ventasemanal[vent];
+                    vent++;
+                }
+                System.out.println("La venta mensual del producto: " + NomProd[codigo] + " es de: " + TotalVenta);
             }
-            System.out.println("La venta mensual del producto: " + NomProd[codigo] + " es de: " + TotalVenta);
         }
     }
 
@@ -402,12 +410,13 @@ public class MyOwnShop {
         else
         {
             NomProduc = NomProd[Código];
-            PrecProduc = PrecProd[Código];
-            System.out.println("Producto agregado: " + NomProduc + " - $" + PrecProduc);
+            double Precio = PSug[ Código ];
+            System.out.println("Producto agregado: " + NomProduc + " - $" + Precio);
             arrventa[vent] = NomProduc + " " + PrecProduc + ";";
             vent++;
             cantidadventa[Código]++;
             ExistProd[Código]--;
+            guardararchivo();
         }
 
         System.out.println("¿Deseas ingresar otro producto?\n1. si\n2. no");
