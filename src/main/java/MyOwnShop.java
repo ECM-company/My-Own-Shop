@@ -463,6 +463,8 @@ private static void Inventario() {
                     System.out.println("Saliendo...");
                     break;
                 default:
+                    System.out.println("Ingresa una opción válida");
+
                     break;
             }
         }
