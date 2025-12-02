@@ -46,6 +46,7 @@ public class MyOwnShop {
                 case 4:
                     System.out.println("Saliendo...");
                 default:
+                    System.out.println("Ingresa una opcion valida");
                     break;
             }
         }
