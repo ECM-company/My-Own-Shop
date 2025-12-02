@@ -534,7 +534,6 @@ private static void Inventario() {
             producto[i - 1] = null;
             i--;
         }
-        System.out.println("Producto eliminado correctamente");
         guardararchivo();
     }
 
@@ -647,7 +646,7 @@ private static void Inventario() {
                     pw.println(producto[j]);
             }
             pw.close();
-            System.out.println("Producto guardado correctamente");
+            System.out.println("....Cambios guardados correctamente.....");
         } catch (Exception e) {
             System.out.println("Error al guardar archivo: " + e.getMessage());
         }
