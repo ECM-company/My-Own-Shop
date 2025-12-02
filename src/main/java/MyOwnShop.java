@@ -416,6 +416,12 @@ public class MyOwnShop {
             vent++;
             cantidadventa[Código]++;
             ExistProd[Código]--;
+            producto[Código] = "Código: " + Código + " | " +
+                    "Nombre: " + NomProd[Código] + " | " +
+                    "Precio: " + PrecProd[Código] + " | " +
+                    "Cantidad: " + ExistProd[Código] + " | " +
+                    "Precio sugerido: " + PSug[Código] + " | " +
+                    "Veces vendido: " + cantidadventa[Código];
             guardararchivo();
         }
 
@@ -450,7 +456,7 @@ private static void Inventario() {
                     EliminarProductos();
                     break;
                 case 3:
-                    GestionarInventario();
+                    CambiodePrecio();
                     break;
                 case 4:
                     System.out.println("Saliendo...");
@@ -461,7 +467,8 @@ private static void Inventario() {
         }
     }
 
-    private static void GestionarInventario() {
+    private static void CambiodePrecio()
+    {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingresa el código del producto:");
         int codigo = sc.nextInt();
