@@ -1,0 +1,2 @@
+=== LISTA DE PRODUCTOS REGISTRADOS ===
+Código: 0 | Nombre: Gansitos | Precio: 5.0 | Cantidad: 11 | Precio sugerido: 6.5 | Veces vendido: 1
