@@ -31,7 +31,7 @@ public class MyOwnShop {
 
         int opcMenu = 0;
         while (opcMenu != 4) {
-            System.out.println("¿A qué módulo deseas ingresar?\n1. Inventario\n2. Ventas\n3. Estadisticas\n4. Salir");
+            System.out.println("¿A qué módulo deseas ingresar?\n  1. Inventario\n  2. Ventas\n  3. Estadisticas\n  4. Salir");
             opcMenu = sc.nextInt();
             switch (opcMenu) {
                 case 1:
@@ -62,10 +62,10 @@ public class MyOwnShop {
         int seleccion = 0;
         while (seleccion != 4) {
             System.out.println("¿A dónde quieres ir?");
-            System.out.println("[1] Reporte de ventas.");
-            System.out.println("[2] Productos destacados. ");
-            System.out.println("[3] Competidores.");
-            System.out.println("[4] Salir.");
+            System.out.println("  [1] Reporte de ventas.");
+            System.out.println("  [2] Productos destacados. ");
+            System.out.println("  [3] Competidores.");
+            System.out.println("  [4] Salir.");
             seleccion = sc.nextInt();
             sc.nextLine();
             switch (seleccion) {
@@ -93,7 +93,7 @@ public class MyOwnShop {
         Scanner sc = new Scanner(System.in);
         int seleccionado;
         System.out.println("¿Deseas comparar los precios de los competidores con los tuyos?");
-        System.out.println("1. Sí\n2. No");
+        System.out.println("  1. Sí\n  2. No");
         seleccionado = sc.nextInt();
         sc.nextLine();
         if (seleccionado == 1) {
@@ -118,7 +118,7 @@ public class MyOwnShop {
                 MyPre = sc.nextInt();
                 PrecCom[CONT] = ComPre - MyPre;
                 CONT++;
-                System.out.println("¿Deseas ingresar otro precio?\n1. Sí\n2.No");
+                System.out.println("¿Deseas ingresar otro precio?\n  1. Sí\n2.No");
                 otroprec = sc.nextInt();
             } while (otroprec == 1);
             for (int h = 0; h < CONT; h++) {
@@ -133,9 +133,9 @@ public class MyOwnShop {
         while (elegProd != 3) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Elige qué productos quieres visualizar");
-            System.out.println("[1] Más vendidos");
-            System.out.println("[2] Menos vendidos");
-            System.out.println("[3] Regresar");
+            System.out.println("  [1] Más vendidos");
+            System.out.println("  [2] Menos vendidos");
+            System.out.println("  [3] Regresar");
             elegProd = sc.nextInt();
 
             switch (elegProd) {
@@ -273,9 +273,9 @@ public class MyOwnShop {
         int opcDeTiempo = 0;
         while (opcDeTiempo != 3) {
             System.out.println("¿En qué rango de tiempo deseas ver?");
-            System.out.println("[1] Semanal");
-            System.out.println("[2] Mensual");
-            System.out.println("[3] Salir");
+            System.out.println("  [1] Semanal");
+            System.out.println("  [2] Mensual");
+            System.out.println("  [3] Salir");
             opcDeTiempo = sc.nextInt();
             sc.nextLine();
             switch (opcDeTiempo) {
@@ -347,7 +347,7 @@ public class MyOwnShop {
         Scanner sc = new Scanner(System.in);
         int opcVentas = 0;
         while (opcVentas != 3) {
-            System.out.println("Bienvenido al módulo de ventas, ¿qué desea realizar?\n 1. Registrar ventas\n 2. Ir a la calculadora\n 3. Salir");
+            System.out.println("Bienvenido al módulo de ventas, ¿qué desea realizar?\n  1. Registrar ventas\n  2. Ir a la calculadora\n  3. Salir");
             opcVentas = sc.nextInt();
             sc.nextLine();
             switch (opcVentas) {
@@ -376,7 +376,7 @@ public class MyOwnShop {
             System.out.print("Ingrese el valor del producto: ");
             suma[count] = sc.nextDouble();
             count++;
-            System.out.println("¿Deseas agregar más productos?\n1. Si\n2. No");
+            System.out.println("¿Deseas agregar más productos?\n  1. Si\n  2. No");
             int opcCalculadora = sc.nextInt();
             if (opcCalculadora == 2) {
                 o = 1;
@@ -413,20 +413,20 @@ public class MyOwnShop {
             NomProduc = NomProd[Código];
             double Precio = PSug[ Código ];
             System.out.println("Producto agregado: " + NomProduc + " - $" + Precio);
-            arrventa[vent] = NomProduc + " " + PrecProduc + ";";
+            arrventa[vent] = NomProduc + " -$" + Precio + ";";
             vent++;
             cantidadventa[Código]++;
             ExistProd[Código]--;
             producto[Código] = "Código: " + Código + " | " +
                     "Nombre: " + NomProd[Código] + " | " +
-                    "Precio: " + PrecProd[Código] + " | " +
+                    "Precio: $" + PrecProd[Código] + " | " +
                     "Cantidad: " + ExistProd[Código] + " | " +
-                    "Precio sugerido: " + PSug[Código] + " | " +
+                    "Precio sugerido: $" + PSug[Código] + " | " +
                     "Veces vendido: " + cantidadventa[Código];
             guardararchivo();
         }
 
-        System.out.println("¿Deseas ingresar otro producto?\n1. si\n2. no");
+        System.out.println("¿Deseas ingresar otro producto?\n  1. si\n  2. no");
         desci = scanner.nextInt();
         scanner.nextLine();
     }
@@ -447,7 +447,7 @@ private static void Inventario() {
         }
         int opcInventario = 0;
         while (opcInventario != 4) {
-            System.out.println("¿Qué desea realizar?\n1. Productos\n2. Eliminar productos\n3. Cambiar precio de un producto\n4. Salir");
+            System.out.println("¿Qué desea realizar?\n  1. Productos\n  2. Eliminar productos\n  3. Cambiar precio de un producto\n  4. Salir");
             opcInventario = sc.nextInt();
             switch (opcInventario) {
                 case 1:
@@ -482,7 +482,7 @@ private static void Inventario() {
             System.out.println("Producto no encontrado.");
             return;
         }
-        System.out.println("¿Deseas actualizar el precio del producto?\n[1] Sí\n[2] No");
+        System.out.println("¿Deseas actualizar el precio del producto?\n  [1] Sí\n  [2] No");
         int opcactualizar = sc.nextInt();
         sc.nextLine();
 
@@ -519,7 +519,7 @@ private static void Inventario() {
             System.out.println("Producto no encontrado.");
             return;
         }
-        System.out.println("¿Estas seguro?\n1. Sí\n2. No");
+        System.out.println("¿Estas seguro?\n  1. Sí\n  2. No");
         int estado = sc.nextInt();
         sc.nextLine();
         if (estado == 1) {
@@ -528,7 +528,7 @@ private static void Inventario() {
                 PrecProd[j] = PrecProd[j + 1];
                 ExistProd[j] = ExistProd[j + 1];
                 PSug[j] = PSug[j + 1];
-                producto[j] = "Código: " + j + " | " + "Nombre: " + NomProd[j] + " | " + "Precio: " + PrecProd[j] + " | " + "Cantidad: " + ExistProd[j] + " | " + "Precio sugerido: " + PSug[j];
+                producto[j] = "Código: " + j + " | " + "Nombre: " + NomProd[j] + " | " + "Precio: $" + PrecProd[j] + " | " + "Cantidad: " + ExistProd[j] + " | " + "Precio sugerido: $" + PSug[j];
             }
             NomProd[i - 1] = null;
             PrecProd[i - 1] = 0;
@@ -544,7 +544,7 @@ private static void Inventario() {
         Scanner sc = new Scanner(System.in);
         int j = 0;
         int k = 0;
-        System.out.println("¿Qué deseas hacer?\n1. Ver los productos registrados\n2. Agregar productos");
+        System.out.println("¿Qué deseas hacer?\n  1. Ver los productos registrados\n  2. Agregar productos");
         int opcInventario = sc.nextInt();
         sc.nextLine();
         if (opcInventario == 2) {
@@ -558,8 +558,8 @@ private static void Inventario() {
                 System.out.println("Ingresa el número de existencias del producto: ");
                 ExistProd[i] = sc.nextInt();
                 sc.nextLine();
-                producto[i] = "Código: " + i + " | " + "Nombre: " + NomProd[i] + " | " + "Precio: " + PrecProd[i] + " | " + "Cantidad: " + ExistProd[i] + " | " + "Precio sugerido: " + PSug[i] + " | " + "Veces vendido: " + cantidadventa[i];
-                System.out.println("¿Desea agregar más productos?\n1. Si\n2. No");
+                producto[i] = "Código: " + i + " | " + "Nombre: " + NomProd[i] + " | " + "Precio: $" + PrecProd[i] + " | " + "Cantidad: " + ExistProd[i] + " | " + "Precio sugerido: $" + PSug[i] + " | " + "Veces vendido: " + cantidadventa[i];
+                System.out.println("¿Desea agregar más productos?\n  1. Si\n  2. No");
                 int Elec = sc.nextInt();
                 sc.nextLine();
                 if (Elec == 2) {
@@ -573,7 +573,7 @@ private static void Inventario() {
             guardararchivo();
         } else {
             if (producto[k] == null) {
-                System.out.println("No hay nngún producto registrado");
+                System.out.println("No hay nigún producto registrado");
             } else {
                 for (k = 0; k < i; k++) {
                     System.out.println(producto[k]);

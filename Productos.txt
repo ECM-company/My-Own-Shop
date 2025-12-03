@@ -1,2 +1,2 @@
 === LISTA DE PRODUCTOS REGISTRADOS ===
-Código: 0 | Nombre: 4 | Precio: 5.0 | Cantidad: 5 | Precio sugerido: 6.5 | Veces vendido: 0
+Código: 0 | Nombre: Aceite | Precio: $19.0 | Cantidad: 5 | Precio sugerido: $24.7 | Veces vendido: 0
