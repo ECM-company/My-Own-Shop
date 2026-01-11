@@ -110,20 +110,20 @@ public class MyOwnShop {
         {
             //---Método para comparar los precios con los de los competidores---//
             Scanner sc = new Scanner(System.in);
-            int ComPre;
-            int MyPre;
-            int[] PrecCom = new int[100];
-            int[] PrecMY = new int[100];
+            double ComPre;
+            double MyPre;
+            double[] PrecCom = new double[100];
+            double[] PrecMY = new double[100];
             int CONT = 0;
             int otroprec;
             do {
                 System.out.println("ingresa el precio del producto de tu competidor");
-                ComPre = sc.nextInt();
+                ComPre = sc.nextDouble();
                 System.out.println("Ingresa el precio de tu producto ");
-                MyPre = sc.nextInt();
+                MyPre = sc.nextDouble();
                 PrecCom[CONT] = ComPre - MyPre;
                 CONT++;
-                System.out.println("¿Deseas ingresar otro precio?\n  1. Sí\n2.No");
+                System.out.println("¿Deseas ingresar otro precio?\n1.Sí\n2.No");
                 otroprec = sc.nextInt();
             } while (otroprec == 1);
             for (int h = 0; h < CONT; h++) {

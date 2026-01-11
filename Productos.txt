@@ -1,2 +1,4 @@
 === LISTA DE PRODUCTOS REGISTRADOS ===
-Código: 0 | Nombre: Aceite | Precio: $19.0 | Cantidad: 5 | Precio sugerido: $24.7 | Veces vendido: 0
+Código: 0 | Nombre: donas | Precio: $17.0 | Cantidad: 16 | Precio sugerido: $22.1 | Veces vendido: 4
+Código: 1 | Nombre: maruchan | Precio: $12.0 | Cantidad: 20 | Precio sugerido: $15.6
+Código: 2 | Nombre: chicle | Precio: $2.0 | Cantidad: 32 | Precio sugerido: $2.6 | Veces vendido: 2
