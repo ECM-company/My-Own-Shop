@@ -129,7 +129,7 @@ public class MyOwnShop {
             for (int h = 0; h < CONT; h++) {
                 System.out.println("La diferencia que hay entre tu precio y el de tu competidor es de $" + PrecCom[h] + " pesos");
             }
-            Estadisticas();
+
         }
     }
 
