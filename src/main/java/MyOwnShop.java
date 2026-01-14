@@ -35,12 +35,15 @@ public class MyOwnShop {
             opcMenu = sc.nextInt();
             switch (opcMenu) {
                 case 1:
+                    Limpiar();
                     Inventario();
                     break;
                 case 2:
+                    Limpiar();
                     Ventas();
                     break;
                 case 3:
+                    Limpiar();
                     Estadisticas();
                     break;
                 case 4:
@@ -56,6 +59,7 @@ public class MyOwnShop {
     private static void Estadisticas() {
         //--------Ingreso al módulo de estadisticas----------------//
         //---Login básico para que solo el administrador pueda entrar---//
+        Log = 0;
         while (Log == 0) {
             LoginBasico();
         }
@@ -451,6 +455,7 @@ public class MyOwnShop {
 
 private static void Inventario() {
         Scanner sc = new Scanner(System.in);
+        Log = 0;
         while (Log == 0) {
             LoginBasico();
         }
@@ -665,6 +670,11 @@ private static void Inventario() {
             System.out.println("....Cambios guardados correctamente.....");
         } catch (Exception e) {
             System.out.println("Error al guardar archivo: " + e.getMessage());
+        }
+    }
+    private static void Limpiar() {
+        for ( int clear = 0; clear <= 15; clear++){
+            System.out.println( "\n" );
         }
     }
 }
