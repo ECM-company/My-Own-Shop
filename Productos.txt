@@ -1,2 +1,8 @@
 === LISTA DE PRODUCTOS REGISTRADOS ===
+<<<<<<< HEAD
 Código: 0 | Nombre: Gansito | Precio: $15.0 | Cantidad: 4 | Precio sugerido: $19.5 | Veces vendido: 1
+=======
+Código: 0 | Nombre: donas | Precio: $17.0 | Cantidad: 16 | Precio sugerido: $22.1 | Veces vendido: 4
+Código: 1 | Nombre: maruchan | Precio: $12.0 | Cantidad: 20 | Precio sugerido: $15.6
+Código: 2 | Nombre: chicle | Precio: $2.0 | Cantidad: 32 | Precio sugerido: $2.6 | Veces vendido: 2
+>>>>>>> 475ff54a785635fceb1ac4ad33d233c6f997087f

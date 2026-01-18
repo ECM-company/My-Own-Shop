@@ -34,6 +34,7 @@ public class MyOwnShop {
             System.out.println("¿A qué módulo deseas ingresar?\n  1. Inventario\n  2. Ventas\n  3. Estadisticas\n  4. Salir");
             opcMenu = sc.nextLine();
             switch (opcMenu) {
+<<<<<<< HEAD
                 case "1":
                     Inventario();
                     break;
@@ -41,6 +42,18 @@ public class MyOwnShop {
                     Ventas();
                     break;
                 case "3":
+=======
+                case 1:
+                    Limpiar();
+                    Inventario();
+                    break;
+                case 2:
+                    Limpiar();
+                    Ventas();
+                    break;
+                case 3:
+                    Limpiar();
+>>>>>>> 475ff54a785635fceb1ac4ad33d233c6f997087f
                     Estadisticas();
                     break;
                 case "4":
@@ -56,6 +69,7 @@ public class MyOwnShop {
     private static void Estadisticas() {
         //--------Ingreso al módulo de estadisticas----------------//
         //---Login básico para que solo el administrador pueda entrar---//
+        Log = 0;
         while (Log == 0) {
             LoginBasico();
         }
@@ -108,14 +122,15 @@ public class MyOwnShop {
         {
             //---Método para comparar los precios con los de los competidores---//
             Scanner sc = new Scanner(System.in);
-            int ComPre;
-            int MyPre;
-            int[] PrecCom = new int[100];
-            int[] PrecMY = new int[100];
+            double ComPre;
+            double MyPre;
+            double[] PrecCom = new double[100];
+            double[] PrecMY = new double[100];
             int CONT = 0;
             String otroprec;
             do {
                 System.out.println("ingresa el precio del producto de tu competidor");
+<<<<<<< HEAD
                 ComPre = sc.nextInt();
                 sc.nextLine();
                 System.out.println("Ingresa el precio de tu producto ");
@@ -126,10 +141,20 @@ public class MyOwnShop {
                 System.out.println("¿Deseas ingresar otro precio?\n  1. Sí\n  2.No");
                 otroprec = sc.nextLine();
             } while (otroprec.equals("1"));
+=======
+                ComPre = sc.nextDouble();
+                System.out.println("Ingresa el precio de tu producto ");
+                MyPre = sc.nextDouble();
+                PrecCom[CONT] = ComPre - MyPre;
+                CONT++;
+                System.out.println("¿Deseas ingresar otro precio?\n1.Sí\n2.No");
+                otroprec = sc.nextInt();
+            } while (otroprec == 1);
+>>>>>>> 475ff54a785635fceb1ac4ad33d233c6f997087f
             for (int h = 0; h < CONT; h++) {
                 System.out.println("La diferencia que hay entre tu precio y el de tu competidor es de $" + PrecCom[h] + " pesos");
             }
-            Estadisticas();
+
         }
     }
 
@@ -445,6 +470,7 @@ public class MyOwnShop {
 
 private static void Inventario() {
         Scanner sc = new Scanner(System.in);
+        Log = 0;
         while (Log == 0) {
             LoginBasico();
         }
@@ -657,6 +683,11 @@ private static void Inventario() {
             System.out.println("....Cambios guardados correctamente.....");
         } catch (Exception e) {
             System.out.println("Error al guardar archivo: " + e.getMessage());
+        }
+    }
+    private static void Limpiar() {
+        for ( int clear = 0; clear <= 15; clear++){
+            System.out.println( "\n" );
         }
     }
 }
