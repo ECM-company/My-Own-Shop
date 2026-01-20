@@ -378,22 +378,37 @@ public class MyOwnShop {
         String opcCalculadora = "";
         double[] suma = new double[30];
         int o = 0;
-        while (o == 0) {
-            System.out.print("Ingrese el valor del producto: ");
-            suma[count] = sc.nextDouble();
-            sc.nextLine();
-            count++;
-            System.out.println("¿Deseas agregar más productos?\n  1. Si\n  2. No");
-            opcCalculadora = sc.nextLine();
-            if (opcCalculadora.equals("2")) {
-                o++;
-            }
+        suma [count] = 0;
+            while (o == 0) {
+                try {
+                    suma[count] = 0;
+                    System.out.print("Ingrese el valor del producto: ");
+                    suma[count] = sc.nextDouble();
+                    sc.nextLine();
+                    count++;
+                    while (!opcCalculadora.equals( "1" ) && !opcCalculadora.equals( "2" )) {
+                        System.out.println("¿Deseas agregar más productos?\n  1. Si\n  2. No");
+                        opcCalculadora = sc.nextLine();
+                        if (opcCalculadora.equals("2")) {
+                            System.out.println("Calculando...");
+                            o++;
+                        }
+                        if (!opcCalculadora.equals("1") && !opcCalculadora.equals("2")) {
+                            System.out.println("Opción inválida");
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println( "Ingresa un NÚMERO" );
+                    o++;
+                }
         }
         double total = 0;
         for (int j = 0; j < count; j++) {
             total += suma[j];
         }
+        System.out.println("-------------------------------------------");
         System.out.println("El total a pagar es: " + total);
+        System.out.println("-------------------------------------------");
     }
 
 
@@ -402,45 +417,45 @@ public class MyOwnShop {
         int Código = 0;
         System.out.println("Bienvenido al reporte de ventas");
         String desci = "";
-        Scanner scanner =new Scanner(System.in);
-        do
-        {
-        System.out.println("Por favor ingresa el código del producto vendido:");
-        Código = scanner.nextInt();
-        scanner.nextLine();
-        if (Código < 0 || Código >= i || NomProd[Código] == null)
-        {
-            System.out.println("Código no valido");
-        }
-        else
-        {
-            NomProduc = NomProd[Código];
-            double Precio = PSug[ Código ];
-            System.out.println("Producto agregado: " + NomProduc + " - $" + Precio);
-            arrventa[vent] = NomProduc + " -$" + Precio + ";";
-            vent++;
-            cantidadventa[Código]++;
-            ExistProd[Código]--;
-            producto[Código] = "Código: " + Código + " | " +
-                    "Nombre: " + NomProd[Código] + " | " +
-                    "Precio: $" + PrecProd[Código] + " | " +
-                    "Cantidad: " + ExistProd[Código] + " | " +
-                    "Precio sugerido: $" + PSug[Código] + " | " +
-                    "Veces vendido: " + cantidadventa[Código];
+        Scanner scanner = new Scanner(System.in);
+        try {
+            do {
+                System.out.println("Por favor ingresa el código del producto vendido:");
+                Código = scanner.nextInt();
+                scanner.nextLine();
+                if (Código < 0 || Código >= i || NomProd[Código] == null) {
+                    System.out.println("Código no valido");
+                } else {
+                    NomProduc = NomProd[Código];
+                    double Precio = PSug[Código];
+                    System.out.println("Producto agregado: " + NomProduc + " - $" + Precio);
+                    arrventa[vent] = NomProduc + " -$" + Precio + ";";
+                    vent++;
+                    cantidadventa[Código]++;
+                    ExistProd[Código]--;
+                    producto[Código] = "Código: " + Código + " | " +
+                            "Nombre: " + NomProd[Código] + " | " +
+                            "Precio: $" + PrecProd[Código] + " | " +
+                            "Cantidad: " + ExistProd[Código] + " | " +
+                            "Precio sugerido: $" + PSug[Código] + " | " +
+                            "Veces vendido: " + cantidadventa[Código];
+                    guardararchivo();
+                }
+
+                System.out.println("¿Deseas ingresar otro producto?\n  1. si\n  2. no");
+                desci = scanner.nextLine();
+            }
+            while (desci.equals("1"));
+
+            System.out.println("--- Venta Registrada ---");
+            for (e = 0; e < vent; e++) {
+                System.out.println(arrventa[e]);
+            }
             guardararchivo();
+        } catch (Exception e){
+            System.out.println( "Ingresa un caracter válido " + e.getMessage());
         }
-
-        System.out.println("¿Deseas ingresar otro producto?\n  1. si\n  2. no");
-        desci = scanner.nextLine();
     }
-        while (desci.equals("1"));
-
-        System.out.println("--- Venta Registrada ---");
-        for (e = 0; e < vent; e++) {
-        System.out.println(arrventa[e]);
-    }
-        guardararchivo();
-}
 
 
 private static void Inventario() {
