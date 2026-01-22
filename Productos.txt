@@ -1,2 +1,3 @@
 === LISTA DE PRODUCTOS REGISTRADOS ===
-Código: 0 | Nombre: Gansito | Precio: $15.0 | Cantidad: 4 | Precio sugerido: $19.5 | Veces vendido: 1
+Código: 0 | Nombre: Papas adobadas barcel | Precio: $12.0 | Cantidad: 3 | Precio sugerido: $15.6 | Veces vendido: 2
+Código: 1 | Nombre: Yogurt alpura de fresa | Precio: $9.0 | Cantidad: 3 | Precio sugerido: $11.7 | Veces vendido: 1
